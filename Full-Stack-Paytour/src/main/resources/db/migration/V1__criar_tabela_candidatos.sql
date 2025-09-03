@@ -13,5 +13,5 @@ CREATE TABLE candidatos (
                             data_envio TIMESTAMP NOT NULL,
                             data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-CREATE INDEX idx_candidates_email ON candidates(email);
-CREATE INDEX idx_candidates_submission_date ON candidates(submission_date);
+CREATE INDEX idx_candidatos_email ON candidatos(email);
+CREATE INDEX idx_candidatos_data_envio ON candidatos(data   _envio);
