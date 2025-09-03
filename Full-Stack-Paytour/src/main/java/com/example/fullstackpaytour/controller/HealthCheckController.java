@@ -21,26 +21,6 @@ public class HealthCheckController {
 
     @GetMapping
     public ResponseEntity<String> healthCheck() {
-        try (Connection connection = dataSource.getConnection()) {
-            return ResponseEntity.ok(" Aplicação e banco de dados estão operacionais!");
-        } catch (SQLException e) {
-            return ResponseEntity.status(503)
-                    .body(" Falha na conexão com o banco de dados: " + e.getMessage());
-        }
-    }
-
-    @GetMapping("/database")
-    public ResponseEntity<String> verificarConexaoBanco() {
-        try (Connection connection = dataSource.getConnection()) {
-            boolean conexaoValida = connection.isValid(2);
-            if (conexaoValida) {
-                return ResponseEntity.ok(" Conexão com o banco de dados está válida e funcionando!");
-            } else {
-                return ResponseEntity.status(503).body(" Conexão com o banco de dados é inválida");
-            }
-        } catch (SQLException e) {
-            return ResponseEntity.status(503)
-                    .body("Falha na conexão com o banco de dados: " + e.getMessage());
-        }
+        return ResponseEntity.ok("Aplicação está rodando!");
     }
 }
