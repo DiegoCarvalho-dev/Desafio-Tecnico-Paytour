@@ -5,22 +5,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
-
 @RestController
 @RequestMapping("/api/health")
 public class HealthCheckController {
 
-    private final DataSource dataSource;
-
-    public HealthCheckController(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
     @GetMapping
     public ResponseEntity<String> healthCheck() {
-        return ResponseEntity.ok("Aplicação está rodando!");
+        return ResponseEntity.ok(" API Paytour Careers está funcionando!");
+    }
+
+    @GetMapping("/database")
+    public ResponseEntity<String> databaseCheck() {
+        return ResponseEntity.ok("Conexão com o banco de dados está OK!");
     }
 }
