@@ -1,0 +1,22 @@
+[33me5b9c16[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m feat: adiciona método para extrair extensão no FileValidationService
+[33m141cb97[m feat: implementado lógica completa de salvamento no CandidatoServiceImpl
+[33me780ebf[m feat: adicionado tratamento global de exceções
+[33m2eda5a0[m feat: atualiza HealthCheckController para padrão REST
+[33ma47614f[m feat: criado CandidatoController com endpoints REST
+[33mefceaae[m fix: atualizado imports para Jakarta Validation
+[33m59380fd[m feat: criado DTO de resposta de erro
+[33mb2c18de[m feat: criado DTO de response para candidato
+[33m9960ee6[m feat: cria DTO de request para candidato
+[33m3e54d4c[m feat: criado serviço de validação de arquivos
+[33m90e0ebc[m feat: criado CandidatoServiceImpl implementação
+[33mf6cd353[m feat: criado CandidatoService interface
+[33m2630783[m feat: criado CandidatoRepository interface
+[33mc487c44[m feat: criado entidade Candidato com mapeamento JPA
+[33mfa45d85[m feat: adicionei índices em migration separado
+[33m179c0dc[m fix: corrigir migration SQL com nomes em português
+[33ma79d980[m docs: atualizado tabela candidatos
+[33mfdd36e7[m refactor: simplificar HealthCheckController removendo teste de banco
+[33mbabfed7[m feat: adicionar endpoint de health check para banco
+[33m66cf239[m feat: criar migração inicial da tabela candidatos
+[33m1aeaf2f[m config: configurado conexão com PostgreSQL
+[33m4323305[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m Projeto criado

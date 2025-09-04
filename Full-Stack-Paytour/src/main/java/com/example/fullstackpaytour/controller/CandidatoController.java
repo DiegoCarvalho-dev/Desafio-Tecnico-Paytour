@@ -3,6 +3,7 @@ package com.example.fullstackpaytour.controller;
 import com.example.fullstackpaytour.dto.request.CandidatoRequest;
 import com.example.fullstackpaytour.dto.response.CandidatoResponse;
 import com.example.fullstackpaytour.dto.response.ErrorResponse;
+import com.example.fullstackpaytour.model.Candidato;
 import com.example.fullstackpaytour.service.CandidatoService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,8 +27,8 @@ public class CandidatoController {
 
     @PostMapping
     public ResponseEntity<?> criarCandidato(
-            @Valid @RequestPart CandidatoRequest candidatoRequest,
-            @RequestPart("arquivoCurriculo") MultipartFile arquivoCurriculo,
+            @Valid @ModelAttribute CandidatoRequest candidatoRequest,
+            @RequestParam("arquivoCurriculo") MultipartFile arquivoCurriculo,
             HttpServletRequest request) {
 
         try {
@@ -81,18 +83,23 @@ public class CandidatoController {
         if (ip == null || ip.isEmpty() || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
+
+        if (ip != null && ip.contains(",")) {
+            ip = ip.split(",")[0].trim();
+        }
+
         return ip;
     }
-    
-    private com.example.fullstackpaytour.model.Candidato convertToEntity(CandidatoRequest request) {
-        var candidato = new com.example.fullstackpaytour.model.Candidato();
+
+    private Candidato convertToEntity(CandidatoRequest request) {
+        Candidato candidato = new Candidato();
         candidato.setNomeCompleto(request.getNomeCompleto());
         candidato.setEmail(request.getEmail());
         candidato.setTelefone(request.getTelefone());
         candidato.setCargoDesejado(request.getCargoDesejado());
         candidato.setNivelEscolaridade(request.getNivelEscolaridade());
         candidato.setObservacoes(request.getObservacoes());
-        candidato.setDataEnvio(java.time.LocalDateTime.now());
+        candidato.setDataEnvio(LocalDateTime.now());
         return candidato;
     }
 }
