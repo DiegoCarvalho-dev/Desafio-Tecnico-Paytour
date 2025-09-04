@@ -10,7 +10,7 @@ import java.util.List;
 public class FileValidationService {
 
     private static final List<String> EXTENSOES_PERMITIDAS = Arrays.asList("pdf", "doc", "docx");
-    private static final long TAMANHO_MAXIMO_BYTES = 1048576;
+    private static final long TAMANHO_MAXIMO_BYTES = 1048576; // 1MB
 
     public void validarArquivo(MultipartFile arquivo) {
         if (arquivo == null || arquivo.isEmpty()) {
@@ -23,7 +23,7 @@ public class FileValidationService {
 
         String nomeArquivo = arquivo.getOriginalFilename();
         if (nomeArquivo != null) {
-            String extensao = nomeArquivo.substring(nomeArquivo.lastIndexOf(".") + 1).toLowerCase();
+            String extensao = extrairExtensao(arquivo);
             if (!EXTENSOES_PERMITIDAS.contains(extensao)) {
                 throw new IllegalArgumentException("Apenas arquivos PDF, DOC e DOCX são permitidos");
             }
@@ -36,5 +36,10 @@ public class FileValidationService {
             return nomeArquivo.substring(nomeArquivo.lastIndexOf(".") + 1).toLowerCase();
         }
         return "";
+    }
+
+    public boolean isExtensaoPermitida(MultipartFile arquivo) {
+        String extensao = extrairExtensao(arquivo);
+        return EXTENSOES_PERMITIDAS.contains(extensao);
     }
 }
