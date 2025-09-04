@@ -1,8 +1,8 @@
 package com.example.fullstackpaytour.dto.request;
 
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
-import javax.validation.constraints.*;
 
 @Data
 public class CandidatoRequest {
