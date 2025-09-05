@@ -40,6 +40,7 @@ const CandidatoForm = () => {
             const response = await candidatoService.criarCandidato(data);
             setMensagem('✅ Candidatura enviada com sucesso!');
 
+            // Limpar formulário
             setFormData({
                 nomeCompleto: '',
                 email: '',
@@ -51,7 +52,8 @@ const CandidatoForm = () => {
             setArquivo(null);
 
         } catch (error) {
-            setMensagem('❌ ' + (error.response?.data?.message || 'Erro ao enviar candidatura'));
+            console.log('Erro:', error);
+            setMensagem('❌ Erro ao enviar candidatura. Verifique o console.');
         } finally {
             setLoading(false);
         }
