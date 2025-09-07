@@ -27,7 +27,7 @@ public class CandidatoServiceImpl implements CandidatoService {
             System.out.println("Dados recebidos - Email: " + candidato.getEmail());
             System.out.println("Arquivo: " + arquivo.getOriginalFilename() + " (" + arquivo.getSize() + " bytes)");
 
-            
+
             boolean emailExiste = verificarEmailExistente(candidato.getEmail());
             System.out.println("Verificação email: " + (emailExiste ? "EXISTE" : "NÃO EXISTE"));
 
