@@ -371,7 +371,6 @@ const CandidatoForm = () => {
             }
 
             const response = await candidatoService.criarCandidato(data);
-            // ALTERAÇÃO: Mudança na mensagem de sucesso - apenas um ✅ no final
             setMensagem('Candidatura enviada com sucesso! ✅');
 
             setFormData({
@@ -386,7 +385,6 @@ const CandidatoForm = () => {
 
         } catch (error) {
             console.error('Erro:', error);
-            // ALTERAÇÃO: Mensagem de erro sem emoji no início
             setMensagem('Erro ao enviar candidatura. ❌');
         } finally {
             setLoading(false);
@@ -498,7 +496,6 @@ const CandidatoForm = () => {
                             onChange={handleFileChange}
                             required
                         />
-                        {/* ALTERAÇÃO: Adicionado texto informativo sobre os formatos aceitos */}
                         <FileHint>Aceitamos apenas arquivos .doc, .docx ou .pdf</FileHint>
                     </FormGroup>
 
