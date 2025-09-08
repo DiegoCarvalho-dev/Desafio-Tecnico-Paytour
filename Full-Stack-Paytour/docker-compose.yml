@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:15
+    container_name: db-app
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: fullstack
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  backend:
+    build: .
+    container_name: backend-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fullstack
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: admin
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend-app
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
